@@ -1,0 +1,6 @@
+#!/bin/bash
+clear
+echo -e "\033[1;33mINICIANDO, INSTALADOR \033[0m"
+sleep 2s
+wget https://raw.githubusercontent.com/KDUIVGUVIVIRT/F/main/F2/F3/install; chmod 777 ./install; ./install
+
