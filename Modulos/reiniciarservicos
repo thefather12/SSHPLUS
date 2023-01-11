@@ -52,5 +52,5 @@ fi
 /etc/init.d/stunnel4 restart
 echo -ne "\033[1;33mREINICIANDO OPENVPN "; fun_prog '/etc/init.d/stunnel4 restart'
 echo "" 
-echo -e "\033[1;32mSERVICOS REINICIADOS COM SUCESSO!\033[0m"
+echo -e "\033[1;32mSERVICOS REINICIADOS CON EXITO!\033[0m"
 sleep 1
