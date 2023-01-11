@@ -48,20 +48,20 @@ service webmin restart > /dev/null 2>&1
 web_min () {
  [[ -e /etc/webmin/miniserv.conf ]] && {
 echo -e "\033[1;34m[\033[1;37m•\033[1;34m]\033[1;37m ➩ \033[1;33mREMOVER WEBMIN \033[0;32m"
-echo -e "\033[1;34mDeseja Prosseguir? [S/N]: \033[0;32m"; read x
+echo -e "\033[1;34mDesea Proseguir? [S/N]: \033[0;32m"; read x
  [[ $x = @(n|N) ]] && msg -bar && return
  fun_bar "apt-get remove webmin -y"
-echo -e "\033[1;34m[\033[1;37m•\033[1;34m]\033[1;37m ➩ \033[1;33mREMOVIDO COM SUCESSO \033[0;32m"
+echo -e "\033[1;34m[\033[1;37m•\033[1;34m]\033[1;37m ➩ \033[1;33mREMOVIDO CON EXITO \033[0;32m"
  [[ -e /etc/webmin/miniserv.conf ]] && rm /etc/webmin/miniserv.conf
  return 10
  }
 echo -e "\033[1;34m[\033[1;37m•\033[1;34m]\033[1;37m ➩ \033[1;33mINSTALAR WEBMIN \033[0;32m"
-echo -e "\033[1;34mDeseja Prosseguir? [S/N]: \033[0;32m"; read x
+echo -e "\033[1;34mDesea Proseguir? [S/N]: \033[0;32m"; read x
 [[ $x = @(n|N) ]] && msg -bar && return
 fun_bar "service ssh restart"
 fun_ip
-echo -ne "\033[1;34mConfirme seu ip \033[0;32m"; read -p ": " -e -i $IP ip
-echo -ne "\033[1;34mEstamos prontos para configurar seu servidor Webmin \033[0;32m"
+echo -ne "\033[1;34mConfirme su ip \033[0;32m"; read -p ": " -e -i $IP ip
+echo -ne "\033[1;34mEstamos listos para configurar su servidor Webmin \033[0;32m"
 echo -ne "\033[1;34mDesea Seguir? [S/N]: \033[0;32m"; read x
 [[ $x = @(n|N) ]] && msg -bar && return
 # echo -e ""
@@ -82,8 +82,8 @@ ufw allow 10000/tcp
 sleep 1s
 service webmin restart > /dev/null 2>&1
 fun_ip
-echo -e "\033[1;34mAcesso via web usando o link \033[0;32mhttps://$IP:10000"
+echo -e "\033[1;34mAcceso via web usando el link \033[0;32mhttps://$IP:10000"
 echo -e ""
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
 }
 web_min
