@@ -50,24 +50,24 @@ s5="stunnel4"
 fi
 fail2ban_function () {
 if [ "$failtwoban" != "" ]; then
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Proteção Ativada!, Deseja Ver o Log?" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Proteccion Activada!, Desea Ver o Log?" ; tput sgr0
 echo ""
 echo -e "\033[1;31m[\033[1;36m1\033[1;31m]\033[1;33m Desinstalar"
 echo -e "\033[1;31m[\033[1;36m2\033[1;31m]\033[1;33m Ver Log"
 echo ""
-read -p "$(echo -e "\033[1;32mOQUE DESEJA FAZER\033[1;31m ?\033[1;37m : ")" lo_og
+read -p "$(echo -e "\033[1;32mQUE DESEA HACER\033[1;31m ?\033[1;37m : ")" lo_og
 if [ "$lo_og" = "2" ]; then
 
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[41;1;37m               ANTI ATAQUE DDOS Log                       \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 cat /var/log/fail2ban.log
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 fi
 if [ "$lo_og" = "1" ]; then
 echo ""
-echo -e "\033[1;32mREMOVENDO ANTI ATAQUE DDOS"
+echo -e "\033[1;32mREMOVIENDO ANTI ATAQUE DDOS"
 echo ""
 fun_bar "apt-get remove fail2ban -y"
 fi
@@ -76,12 +76,12 @@ return
 fi
 
 clear
-echo -e "\033[1;32mINICIANDO O ANTI ATAQUE DDOS PROTEÇÃO... \033[0m\n"
-echo -e "\033[1;33mEste Anti Ataque foi Feito unicamente para proteger seu"
-echo -e "\033[1;33mSistema ,seu objetivo é analizar LOGS DE ACESSO e bloquear toda e"
-echo -e "\033[1;33mqualquer ação suspeita aumentando 70% sua segurança."
+echo -e "\033[1;32mINICIANDO ANTI ATAQUE DDOS PROTECCION... \033[0m\n"
+echo -e "\033[1;33mEste Anti Ataque fue hecho unicamente para proteger su"
+echo -e "\033[1;33mSistema ,su objetivo es analizar LOGS DE ACESSO y bloquear toda"
+echo -e "\033[1;33mAccion sospechosa aumentando 70% su seguridad."
 echo ""
-read -p "$(echo -e "\033[1;32mDESEJA INSTALAR ANTI ATAQUE DDOS \033[1;31m? \033[1;33m[s/n]:\033[1;37m ")" fail2ban
+read -p "$(echo -e "\033[1;32mDESEA INSTALAR ANTI ATAQUE DDOS \033[1;31m? \033[1;33m[s/n]:\033[1;37m ")" fail2ban
 if [[ "$fail2ban" = "s" || "$fail2ban" = "S" ]]; then
 echo ""
 echo -e "\033[1;32mINSTALANDO"
@@ -129,7 +129,7 @@ action_badips = badips.py[category="%(__name__)s", banaction="%(banaction)s", ag
 action_badips_report = badips[category="%(__name__)s", agent="%(fail2ban_agent)s"]
 action = %(action_)s' > /etc/fail2ban/jail.local
 echo ""
-echo -e "\033[1;32mAnti Ataque DDOS Sera Instalado Nos Seguintes Serviços"
+echo -e "\033[1;32mAnti Ataque DDOS Sera Instalado en los Siguintes Servicios"
 echo ""
 if [ "$s1" != "" ]; then
 echo -ne " $s1"
@@ -145,7 +145,7 @@ echo -ne " $s4"
 fi
 echo ""
 echo ""
-read -p "$(echo -e "\033[1;32mConfirma a escolha? \033[1;31m? \033[1;33m[S/N]:\033[1;37m ")" sim_nao
+read -p "$(echo -e "\033[1;32mConfirmar y escojer? \033[1;31m? \033[1;33m[S/N]:\033[1;37m ")" sim_nao
 if [[ "$sim_nao" = "s" || "$sim_nao" = "S" ]]; then
 if [ "$s1" != "" ]; then
 echo '[sshd]
@@ -476,7 +476,7 @@ logencoding = utf-8
 logpath  = /var/log/haproxy.log' >> /etc/fail2ban/jail.local
 service fail2ban restart
 echo ""
-echo -e "\033[1;32mInstalação Concluída"
+echo -e "\033[1;32mInstalacion Terminada"
  fi
 fi
 # echo ""
