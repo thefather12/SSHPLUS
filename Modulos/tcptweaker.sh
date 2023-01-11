@@ -3,9 +3,9 @@ tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "TCP Tweaker 1.
 if [[ `grep -c "^#PH56" /etc/sysctl.conf` -eq 1 ]]
 then
 	echo ""
-	echo "As configurações de rede TCP Tweaker já foram adicionadas no sistema!"
+	echo "Las configuraciones de red TCP Tweaker yá fueron agregadas al sistema!"
 	echo ""
-	read -p "Deseja remover as configurações do TCP Tweaker? [s/n]: " -e -i n resposta0
+	read -p "Desea remover las configuraciones de TCP Tweaker? [s/n]: " -e -i n resposta0
 	if [[ "$resposta0" = 's' ]]; then
 		grep -v "^#PH56
 net.ipv4.tcp_window_scaling = 1
@@ -17,7 +17,7 @@ net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" /etc/sysctl.conf > /tmp/syscl && mv /tmp/syscl /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null
 		echo ""
-		echo "As configurações de rede do TCP Tweaker foram removidas com sucesso."
+		echo "Las configuraciones de red TCP Tweaker fueron removidas con exito."
 		echo ""
 	exit
 	else 
@@ -26,14 +26,14 @@ sysctl -p /etc/sysctl.conf > /dev/null
 	fi
 else
 	echo ""
-	echo "Este é um script experimental. Use por sua conta e risco!"
-	echo "Este script irá alterar algumas configurações de rede"
-	echo "do sistema para reduzir a latência e melhorar a velocidade."
+	echo "Este es un script experimental. Use por su cuenta y riesgo!"
+	echo "Este script cambiara algunas configuraciones de red"
+	echo "de sistema para reduzir latencia y mejorar la velocidad."
 	echo ""
-	read -p "Continuar com a instalação? [s/n]: " -e -i n resposta
+	read -p "Continuar con la instalacion? [s/n]: " -e -i n resposta
 	if [[ "$resposta" = 's' ]]; then
 	echo ""
-	echo "Modificando as seguintes configurações:"
+	echo "Modificando las seguintes configuraciones:"
 	echo " " >> /etc/sysctl.conf
 	echo "#PH56" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_window_scaling = 1
@@ -46,11 +46,11 @@ net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
 echo ""
 sysctl -p /etc/sysctl.conf
 		echo ""
-		echo "As configurações de rede do TCP Tweaker foram adicionadas com sucesso."
+		echo "Las configuraciones de red TCP Tweaker fueron agregadas con exito."
 		echo ""
 	else
 		echo ""
-		echo "A instalação foi cancelada pelo usuário!"
+		echo "La instalacion fue cancelada por el usuário!"
 		echo ""
 	fi
 fi
