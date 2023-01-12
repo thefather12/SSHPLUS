@@ -498,7 +498,7 @@ echo ""
 			else
 			echo -e "\e[91m DESACTIVADO"
 			fi`;
-            echo -e "\033[1;32mSERVICO: \033[1;33mV2RAY \033[1;32m$xv2ray1\033[1;37m" 
+            echo -e "\033[1;32mSERVICIO: \033[1;33mV2RAY \033[1;32m$xv2ray1\033[1;37m" 
 			xv2ray=`if netstat -tunlp |grep v2ray 1> /dev/null 2> /dev/null; then
 			echo -e "\033[1;32m◉ "
 			else
