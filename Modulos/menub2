@@ -1,65 +1,60 @@
 #!/bin/bash
-clear
-echo -e "\033[01;34m╔══════════════════════════════════════════════╗\033[0m"
-echo -e "\033[01;34m╠══════════════════════════════════════════════╣\033[0m"
-echo -e "\033[01;34m║\E[44;1;47m      👽👽👽 𝐒𝐇𝐀𝐃𝐎𝐖 𝐏𝐑𝐎𝐉𝐄𝐂𝐓𝐒 𝐏𝐑𝐎 👽👽👽            \E[0m\033[0;34m║"
-echo -e "\033[01;34m╠══════════════════════════════════════════════╣\033[0m"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m01\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR UDP-CUSTOM \033[01;34m                  ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m02\033[0;31m]\033[1;32m ➩  \033[1;33mABRIR MENU UDP-CUSTOM \033[01;34m                ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m03\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR SLOW-UDP EVOZI \033[01;34m              ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m04\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR WIREGUARD \033[01;34m                   ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m05\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR OPENVPN-PRO \033[01;34m                 ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m06\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR WS-EPRO \033[01;34m                     ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m07\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR HYSTERIA-EVOZI V2 \033[01;34m           ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m08\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR PSIPHON \033[01;34m                     ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m09\033[0;31m]\033[1;32m ➩  \033[1;33mUTILIZAR VPS-OTIMIZADOR \033[01;34m              ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m10\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR HYSTERIA-PRO \033[01;34m                ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m11\033[0;31m]\033[1;32m ➩  \033[1;33mINSTALAR UDP-HYSTERIA(V1-V2) \033[01;34m         ║"
-echo -e "\033[01;34m║\033[0;31m[\033[1;36m00\033[0;31m]\033[1;32m ➩  \033[1;33mSALIR \033[01;34m                                ║"
-echo -e "\033[01;34m╠══════════════════════════════════════════════╝\033[0m"
-tput civis
-echo -ne "\033[1;34m╰━━━━━━━━❪\033[1;32mSELECCIONE UNA OPCIÓN\033[1;33m\033[1;31m\033[1;37m":; read x
-case $x in
-1 | 01)
     clear
-    sudo wget https://raw.githubusercontent.com/thefather12/UDP-PRO/main/install.sh; chmod +x install.sh; ./install.sh
-    ;;
-2 | 02)
-    udp
-    ;;
-3 | 03)
-    wget -N --no-check-certificate https://raw.githubusercontent.com/evozi/hysteria-install/main/slowudp/slowudp.sh && bash slowudp.sh
-    ;;
-4 | 04)
-    bash <(curl -Ls https://raw.githubusercontent.com/Azumi67/FRP-Wireguard/main/wire2.sh --ipv4)
-    ;;
-5 | 05)
-    bash <(curl -sL https://raw.githubusercontent.com/PhoenixxZ2023/OpenVPN/master/openvpn-install.sh)
-    ;;
-6 | 06)
-    bash <(curl -sL https://raw.githubusercontent.com/PhoenixxZ2023/ws-epro/main/install.sh)
-    ;;
-7 | 07)
-    wget -N --no-check-certificate https://raw.githubusercontent.com/evozi/hysteria-install/main/hy2/hysteria2.sh && bash hysteria2.sh
-    ;;
-8 | 08)
-    psiphon.sh
-    ;;
-9 | 09)
-    apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
-    ;;
-10 | 10)
-    wget https://github.com/thefather12/UDPHISTERIA/raw/main/install.sh; chmod +x install.sh; ./install.sh
-    ;;
-11 | 11)
-    wget --no-cache https://github.com/rudi9999/UDPMOD/raw/main/install.sh; chmod +x install.sh; ./install.sh    
-    ;; 
-0 | 00)
-    clear
-    menu
-    ;;
-*)
-    echo -e "\033[1;31mOpção invalida !\033[0m"
-    sleep 2
-    ;;
-esac
+    echo -e "\033[01;31m║\033[1;31m\033[5;34;47m                 MENU HERRAMIENTAS PRO                   \033[1;33m \033[0m\033[01;31m║"
+    echo -e "\033[01;31m║\033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 01 •\033[1;34m]\033[1;37m ➩  \033[1;33mINSTALAR UDP-CUSTOM \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 02 •\033[1;34m]\033[1;37m ➩  \033[1;33mABRIR MENU UDP-CUSTOM \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 03 •\033[1;34m]\033[1;37m ➩  \033[1;33mACTIVAR UDP-SOCKSIP \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 04 •\033[1;34m]\033[1;37m ➩  \033[1;33mACTIVAR UDP-HISTERIA \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 05 •\033[1;34m]\033[1;37m ➩  \033[1;33mINSTALAR WEBSOCKET PRO \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 06 •\033[1;34m]\033[1;37m ➩  \033[1;33mINSTALAR PSIPHON PRO \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 07 •\033[1;34m]\033[1;37m ➩  \033[1;33mINSTALAR CHECKUSER GLTUNNEL \033[0m"
+    echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 00 •\033[1;34m]\033[1;37m ➩  \033[1;33mVOLVER  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
+    echo -e "\033[01;31m║\033[0m"
+    echo -e "\033[0;31m╠━━═━═━═━═━═━═━═━═━━═━═━═━═━═━━═━═━═━═━═━━═━═━═━═━═━\033[0m"
+			tput civis
+			echo -ne "\033[1;31m╰━━━━━━━━❪\033[1;32mSELECCIONE UNA OPCION\033[1;33m\033[1;31m\033[1;37m : ";
+			read x
+			tput cnorm
+			clear
+			case $x in
+			1 | 01)
+			clear
+                        sudo wget https://raw.githubusercontent.com/thefather12/UDP-PRO/main/install.sh; chmod +x install.sh; ./install.sh
+			;;
+            2 | 02)
+			udp
+			;;
+			3 | 03)
+			clear
+                        sudo wget https://raw.githubusercontent.com/thefather12/SocksIP-udpServer/main/UDPserver.sh; chmod +x UDPserver.sh; ./UDPserver.sh
+                        udp
+			;;
+			4 | 04)
+			clear
+                        sudo wget https://github.com/thefather12/UDPHISTERIA/raw/main/install.sh; chmod +x install.sh; ./install.sh
+			;;
+			5 | 05)
+			clear
+                        sudo wget 'https://www.dropbox.com/scl/fi/bbsrna4qkc0xh5p3ft5nt/install-ws.bin?rlkey=ibebstzlal5v6597azo2tutzp&dl' -O 'install-ws' && chmod +x install-ws && ./install-ws
+			;;
+            6 | 06)
+			clear
+                        sudo wget 'https://www.dropbox.com/scl/fi/672mpa413z4iz7qitpgoa/psiphon.sh?rlkey=lwchgvbyglc1epatox9m6km0c&dl' -O 'psiphon.sh' && chmod +x psiphon.sh && ./psiphon.sh
+			;;
+            7 | 07)
+                        gltunnel
+            ;;
+			0 | 00)
+			clear
+			menu
+			;;
+			*)
+			echo -e "\033[1;31mOpcion invalida !\033[0m"
+			sleep 2
+			;;
+			esac
+		done
+	}
+	fun_conexao
+}
