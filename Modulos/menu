@@ -409,13 +409,8 @@ echo -e "\033[1;31m║   \033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1
 \033[1;31m║   [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mLISTA DE USUARIOS \033[1;31m   [\033[1;36m20\033[1;31m] \033[1;37m• \033[1;33mFIREWALL (PRO)  \033[1;31m 
 \033[1;31m║   [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mABRIR PUERTOS \033[1;31m       [\033[1;36m21\033[1;31m] \033[1;37m• \033[1;33mINFO VPS \033[1;31m>\033[1;33m>\033[1;32m>\033[0m \033[1;31m    
 \033[1;31m║   [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mCREAR MEMORIA SWAP \033[1;31m  [\033[1;36m22\033[1;31m] \033[1;37m• \033[1;33mCHECKUSER 4G  \033[1;31m   
-\033[1;31m║   [\033[1;36m A \033[1;31m] \033[1;37m• \033[1;33mCHECKUSER GLTUNNEL \033[1;31m [\033[1;36m23\033[1;31m] \033[1;37m• \033[1;33mMAS \033[1;31m>\033[1;33m>\033[1;32m>\033[0m \033[1;31m
-\033[1;31m║   [\033[1;36m B \033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson\033[1;31m
-\033[1;31m║   [\033[1;36m C \033[1;31m] \033[1;37m• \033[1;33mDNS NETFLIX \033[1;31m
-\033[1;31m║   [\033[1;36m D \033[1;31m] \033[1;37m• \033[1;33mPANEL BASHTOP \033[1;31m
-\033[1;31m║   [\033[1;36m E \033[1;31m] \033[1;37m• \033[1;33mACTIVAR UDP-SOCKSIP \033[1;31m
-\033[1;31m║   [\033[1;36m F \033[1;31m] \033[1;37m• \033[1;33mMENU UDP-CUSTOM \033[1;31m
-\033[1;31m║   [\033[1;36m G \033[1;31m] \033[1;37m• \033[1;33mINSTALAR WEBSOCKET PRO\033[1;31m"
+\033[1;31m║   [\033[1;36m A \033[1;31m] \033[1;37m• \033[1;33mHERRAMIENTAS PRO \033[1;31m   [\033[1;36m23\033[1;31m] \033[1;37m• \033[1;33mMAS \033[1;31m>\033[1;33m>\033[1;32m>\033[0m \033[1;31m
+\033[1;31m║   [\033[1;36m B \033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson\033[1;31m"
 echo -e "\033[1;31m╠════════════════════════════════════════════════════════════╝\033[0m"
 echo -ne "\033[1;31m╚╣\033[1;32m SELECCIONE UNA OPCION \033[1;33m:"; read x
 
@@ -525,31 +520,12 @@ case "$x" in
    menu2
    ;;
    a)
-   gltunnel
-   ;;
-   b)
-   onapp_ssh
-   ;;
-   c) 
-   dns-netflix.sh
-   ;;
-   d)
-   cd bashtop/
-   bashtop
-   ;;
-   e)
-   clear
-   sudo wget https://raw.githubusercontent.com/thefather12/SocksIP-udpServer/main/UDPserver.sh; chmod +x UDPserver.sh; ./UDPserver.sh
-   udp
-   ;;
-   f)
    clear
    menub2
    exit;
    ;;
-   g)
-   clear
-   sudo wget 'https://www.dropbox.com/scl/fi/bbsrna4qkc0xh5p3ft5nt/install-ws.bin?rlkey=ibebstzlal5v6597azo2tutzp&dl' -O 'install-ws' && chmod +x install-ws && ./install-ws
+   b)
+   onapp_ssh
    ;;
    *)
    echo -e "\n\033[1;31mOpcion invalida !\033[0m"
