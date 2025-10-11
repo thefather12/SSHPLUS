@@ -2194,7 +2194,7 @@ echo -e "\033[01;31m║\033[0m"
 			;;
 			14 | 14)
 			clear
-			painelv2ray 
+			xuiv2ray 
 			;;
 			15 | 15)
 			clear
