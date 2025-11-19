@@ -2194,7 +2194,7 @@ echo -e "\033[01;31m║\033[0m"
 			;;
 			14 | 14)
 			clear
-		     sudo wget https://raw.githubusercontent.com/AghayeCoder/tx-ui/master/install.sh)
+		     bash <(curl -Ls https://raw.githubusercontent.com/AghayeCoder/tx-ui/master/install.sh)
 			;;
 			15 | 15)
 			clear
