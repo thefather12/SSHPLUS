@@ -45,7 +45,7 @@ fun_botOnOff() {
         echo -e "\033[1;32mINICIANDO BOT SSH-PRO \033[0m\n"
         fun_bot1() {
         	[[ "$(grep -wc '16' /etc/issue.net)" != '0' ]] && {
-        		raw.githubusercontent.com/thefather12/SSHPLUS/main/Modulos/ShellBot.sh > /etc/SSHPlus/ShellBot.sh
+        		wget -qO- https://raw.githubusercontent.com/thefather12/SSHPLUS/main/Modulos/ShellBot.sh > /etc/SSHPlus/ShellBot.sh
         	}
             [[ ! -e "/etc/SSHPlus/ShellBot.sh" ]] && {
 				wget -qO- https://raw.githubusercontent.com/thefather12/SSHPLUS/main/Modulos/ShellBot.sh >/etc/SSHPlus/ShellBot.sh
