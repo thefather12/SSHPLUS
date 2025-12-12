@@ -1719,12 +1719,14 @@ echo -e "\033[0;34m┗━━━━━━━━━━━━━━━━━━━�
         fun_securityoff
     else
         fun_inisecurity
+        
+        fun_socks
     fi
 
 
 
 
-elif [[ "$resposta" = '30' ]]; then
+elif [[ "$resposta" = '3' ]]; then
     clear
     if screen -ls | grep -w security | grep -v grep >/dev/null 2>/dev/null; then
         echo -e "\E[41;1;37m          WEBSOCKET SECURITY         \E[0m"
@@ -1849,7 +1851,7 @@ elif [[ "$resposta" = '4' ]]; then
         echo ""
         fun_bar 'fun_iniproxydt'
         echo ""
-        echo -e "\033[1;32PROXY DT ATIVADO COM SUCESSO\033[1;33m"
+        echo -e "\033[1;32mPROXY DT ATIVADO COM SUCESSO\033[1;33m"
         
         fun_socks
     fi
