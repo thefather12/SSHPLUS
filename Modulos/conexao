@@ -1953,8 +1953,9 @@ then
         elif [[ "$resposta" = '7' ]]; then
 			if ps x | grep -w PPub.py | grep -v grep 1>/dev/null 2>/dev/null;
 			then
-				# ... (Bloque de código para DESACTIVAR el servicio - Sin cambios) ...
-				
+				clear
+				echo -e "\E[41;1;37m           WEBSOCKET MOD             \E[0m"
+				echo ""
 				fun_wsmodoff() {
 					for pidproxy in $(screen -ls | grep ".wsmod" | awk {'print $1'});
 					do
@@ -1973,48 +1974,42 @@ then
 				echo -e "\033[1;32mWEBSOCKET MOD DESACTIVADO CON EXITO!\033[1;33m"
 				sleep 3
 				fun_socks
-			else
+			else # INICIO DE LA CONFIGURACIÓN AVANZADA
 				clear
 				echo -e "\E[44;1;37m           WEBSOCKET MOD - CONFIGURACIÓN           \E[0m"
 				echo ""
 				
-				# 1. PEDIR PUERTO
-				echo -ne "\033[1;32mQUE PUERTO DESEA UTILIZAR \033[1;33m?\033[1;37m: "
+				# 1. PEDIR PUERTO (Puerto de escucha local)
+				echo -ne "\033[1;32mPUERTO DE ESCUCHA LOCAL (Ej: 80, 8080) \033[1;33m?\033[1;37m: "
 				read porta
 				[[ -z "$porta" ]] && {
-					echo ""
-					echo -e "\033[1;31mPuerto invalido!"
-					sleep 3
-					clear
-					fun_conexao
+					echo -e "\n\033[1;31mPuerto invalido!"
+					sleep 2; clear; fun_socks; return
 				}
-				verif_ptrs $porta # Verificación de puerto
+				verif_ptrs $porta # Se asume que esta función existe en tu script principal
 
-				# 2. PEDIR MENSAJE HTML (Mensaje de estado/código)
-				echo -ne "\033[1;32mINGRESE EL MENSAJE HTML DE ESTADO \033[1;33m?\033[1;37m: "
+				# 2. PEDIR MENSAJE HTML (Mini-Banner)
+				echo -ne "\033[1;32mINGRESE EL MENSAJE DE ESTADO (Mini-Banner) \033[1;33m?\033[1;37m: "
 				read msghtml
-				[[ -z "$msghtml" ]] && msghtml="HTTP/1.1 200 OK" # Valor por defecto si no se ingresa
+				[[ -z "$msghtml" ]] && msghtml="Conexion_Establecida" # Valor por defecto
 				
 				# 3. PEDIR CÓDIGO DE ESTADO (101, 200, 301, etc.)
 				echo ""
 				echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mCÓDIGO 101 (Switching Protocols)\033[0m"
-				echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mCÓDIGO 200 (OK)\033[0m"
-				echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;33mCÓDIGO 301 (Moved Permanently)\033[0m"
+				echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mCÓDIGO 200 (OK) - (Recomendado)\033[0m"
 				echo -ne "\033[1;32mELIJA EL CÓDIGO DE RESPUESTA \033[1;33m?\033[1;37m: "
 				read codigostatus
 				
 				case "$codigostatus" in
 					1) codigo="101";;
-					2) codigo="200";;
-					3) codigo="301";;
-					*) codigo="200"; echo -e "\n\033[1;33mOpción inválida, usando 200 (OK).\033[0m"; sleep 1;;
+					*) codigo="200"; echo -e "\n\033[1;33mOpción inválida/Vacía, usando 200 (OK).\033[0m"; sleep 1;;
 				esac
 
 				# 4. PEDIR PROTOCOLO DE ENLACE (SSH, SSL, DROPBEAR)
 				echo ""
-				echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mENLAZAR CON SSH\033[0m"
-				echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mENLAZAR CON SSL\033[0m"
-				echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;33mENLAZAR CON DROPBEAR\033[0m"
+				echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mENLAZAR CON SSH (Puerto 22, 143...)\033[0m"
+				echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mENLAZAR CON SSL (Puerto 443, ...)\033[0m"
+				echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;33mENLAZAR CON DROPBEAR (Puerto 109, 110...)\033[0m"
 				echo -ne "\033[1;32mELIJA EL PROTOCOLO DE ENLACE \033[1;33m?\033[1;37m: "
 				read protocolo_enlace
 				
@@ -2022,38 +2017,39 @@ then
 					1) enlace_ptc="SSH";;
 					2) enlace_ptc="SSL";;
 					3) enlace_ptc="DROPBEAR";;
-					*) enlace_ptc="SSH"; echo -e "\n\033[1;33mOpción inválida, usando SSH por defecto.\033[0m"; sleep 1;;
+					*) enlace_ptc="SSH"; echo -e "\n\033[1;33mOpción inválida/Vacía, usando SSH por defecto.\033[0m"; sleep 1;;
 				esac
                 
 				fun_iniwsmod() {
-					# FUNCIÓN DE CONFIGURACIÓN
+					# FUNCIÓN DE CONFIGURACIÓN (VÍA SED)
 					fun_config_wsmod() {
-						# Implementación asumiendo que PPub.py usa variables en su código como proxy.py o wsproxy.py
-						# Reemplazar el mensaje HTML (MSGH)
-						msgsocks2=$(grep -E "MSGH_WSS =" /etc/FATHER/protocols/PPub.py | awk -F = '{print $2}')
-						sed -i "s/$msgsocks2/ '$msghtml'/g" /etc/FATHER/protocols/PPub.py
+						local PPub_file="/etc/FATHER/protocols/PPub.py"
 						
-						# Reemplazar el código de estado (CODE)
-						codigo_old=$(grep -E "CODE_WSS =" /etc/FATHER/protocols/PPub.py | awk -F = '{print $2}')
-						sed -i "s/$codigo_old/ '$codigo'/g" /etc/FATHER/protocols/PPub.py
+						# 1. Reemplazar el mensaje de estado (Mini-Banner)
+						msgsocks2=$(grep -E "^MSGH_MOD =" "$PPub_file" | awk -F = '{print $2}')
+						sed -i "s/$msgsocks2/ '$msghtml'/g" "$PPub_file"
 						
-						# Reemplazar el protocolo de enlace (PTC)
-						ptc_old=$(grep -E "PTC_WSS =" /etc/FATHER/protocols/PPub.py | awk -F = '{print $2}')
-						sed -i "s/$ptc_old/ '$enlace_ptc'/g" /etc/FATHER/protocols/PPub.py
+						# 2. Reemplazar el código de estado (CODE)
+						codigo_old=$(grep -E "^CODE_MOD =" "$PPub_file" | awk -F = '{print $2}')
+						sed -i "s/$codigo_old/ '$codigo'/g" "$PPub_file"
+						
+						# 3. Reemplazar el protocolo de enlace (PTC)
+						ptc_old=$(grep -E "^PTC_MOD =" "$PPub_file" | awk -F = '{print $2}')
+						sed -i "s/$ptc_old/ '$enlace_ptc'/g" "$PPub_file"
 					}
 					
 					fun_config_wsmod # Ejecutar la configuración
 					sleep 1
 					
-					# INICIAR EL SERVICIO
-					screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta
+					# INICIAR EL SERVICIO con el puerto y el mensaje como argumentos
+					screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta $msghtml
 					
 					# ACTUALIZAR AUTOSTART
 					[[ $(grep -wc "PPub.py" /etc/autostart) = '0' ]] && {
-						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'wsmod' -X quit;  screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta; }" >>/etc/autostart
+						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'wsmod' -X quit;  screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta $msghtml; }" >>/etc/autostart
 					} || {
 						sed -i '/PPub.py/d' /etc/autostart
-						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'wsmod' -X quit;  screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta; }" >>/etc/autostart
+						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'wsmod' -X quit;  screen -dmS wsmod python /etc/FATHER/protocols/PPub.py $porta $msghtml; }" >>/etc/autostart
 					}
 				}
 				echo ""
